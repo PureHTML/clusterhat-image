@@ -4,6 +4,39 @@
 
 Scripts and files used to build Cluster HAT images from Raspbian.
 
+
+Installation
+------------
+
+```shell
+sudo apt install lsb-release wget
+echo "deb http://repo.vitexsoftware.cz $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vitexsoftware.list
+sudo wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg http://repo.vitexsoftware.cz/keyring.gpg
+sudo apt update
+sudo apt install clusterhat-image
+```
+
+
+Usage
+-----
+
+Simply run 
+```shell
+clusterhat-creator
+```
+to download initial images and build ClusterHat ones
+
+
+If you use https://github.com/Vitexus/gnome-multi-writer/releases/tag/3.35.91 you can use writer helper:
+
+```shell
+/usr/lib/clusterhat-image/writer.sh
+```
+![X](writer.png?raw=true)
+
+
+
+
 ## Building Cluster HAT Images
 
 The build script is located in the build directory.
@@ -20,6 +53,8 @@ cd clusterhat-image/build/
 The "2017-09-07" date above should be the date from the Raspbian/Raspberry Pi OS image you wish to convert.
 
 When building arm64 images you need to be on an arm64 machine.
+
+
 
 ## Cluster HAT Files
 
