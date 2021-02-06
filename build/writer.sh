@@ -1,13 +1,20 @@
 #!/bin/bash
 
-#Please Use  version wtih -i support  https://github.com/Vitexus/gnome-multi-writer/releases/tag/3.35.91
-WRITER="/usr/bin/gnome-multi-writer "
+BALENA=/usr/bin/balena-etcher-electron
+if [ -f "$BALENA" ]; then
+    WRITER="/usr/bin/balena-etcher-electron"
+else 
+    #Please Use  version wtih -i support  https://github.com/Vitexus/gnome-multi-writer/releases/tag/3.35.91
+    WRITER="/usr/bin/gnome-multi-writer -i "
+fi
+
 
 cd "$(dirname "$0")"
 
 source ./config.sh
 
 # Please use https://github.com/Vitexus/gnome-multi-writer/releases/tag/3.35.91
+
 
 IMAGES=`ls $DEST`
 
@@ -22,5 +29,5 @@ WRITE=$("${cmd[@]}" ${OPTIONS})
 
 for IMG in $WRITE
 do
-    sudo $WRITER -i $DEST/$IMG
+    sudo $WRITER $DEST/$IMG
 done
