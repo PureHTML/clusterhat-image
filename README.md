@@ -1,5 +1,7 @@
 # Cluster HAT
 
+![InAction](clusterhat.jpeg?raw=true)
+
 Scripts and files used to build Cluster HAT images from Raspbian.
 
 ## Building Cluster HAT Images
