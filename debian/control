@@ -1,0 +1,15 @@
+Source: clusterhat-image
+Section: devel
+Priority: optional
+Maintainer: CyberVitexus <info@vitexsoftware.cz>
+Build-Depends: debhelper (>=11~)
+Standards-Version: 4.1.4
+Homepage: https://github.com/PureHTML/clusterhat-image
+
+Package: clusterhat-image
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends},sudo,wget,unzip,coreutils,e2fsprogs,fdisk,parted,mount,sed,dialog
+Recommends: gnome-multi-writer|balena-etcher
+Description: Cluster Hat image builde
+ Scripts and files used to build Cluster HAT images from Raspbian.

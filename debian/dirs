@@ -1,0 +1,5 @@
+/var/lib/clusterhat-image
+/var/lib/clusterhat-image/src
+/var/lib/clusterhat-image/dest
+/var/lib/clusterhat-image/mnt
+/var/lib/clusterhat-image/mnt2

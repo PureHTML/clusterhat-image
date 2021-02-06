@@ -4,7 +4,7 @@ source ./config.sh
 
 if [ $# -ne 1 ]; then
  echo "Usage: $0 <version>"
- echo " Where version is 2017-08-16 in 2017-08-16-raspbian-stretch-lite.img"
+ echo " Where version is 2021-01-11 2021-01-11-raspios-buster-armhf-lite.zip"
  echo " Builds lite & desktop images for controller, p1, p2, p3 and p4"
  echo " SOURCE=$SOURCE (see config.sh)"
  echo " DEST=$DEST"
