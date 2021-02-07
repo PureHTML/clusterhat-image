@@ -23,6 +23,7 @@ case "$1" in
 
 	udevadm control --reload-rules
 	systemctl enable clusterctrl-init
+	systemctl enable clusterctrl-state
 	raspi-config nonint do_i2c 0
 
     ;;

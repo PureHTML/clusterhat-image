@@ -3,3 +3,5 @@
 /var/lib/clusterhat-image/dest
 /var/lib/clusterhat-image/mnt
 /var/lib/clusterhat-image/mnt2
+/etc/clusterhat/on
+/etc/clusterhat/off

@@ -1,29 +1,29 @@
 #!/bin/bash
 
-OPTIONS=" "
-for PIZEROSTATE in `clusterctrl status | tail -n 4`
-do
-
-
-
-    PIZERO="${PIZEROSTATE:0:2}"
-    PIZERO_STATUS="${PIZEROSTATE:3:1}"
-
-    if [ "$PIZERO_STATUS" == "1" ]; then
-        OPTIONS+="$PIZERO on "
-    else
-        OPTIONS+="$PIZERO off "
-    fi
-    
-
-done
-
-cmd=(dialog --stdout --no-items --separate-output --ok-label "Turn PiZeros" --checklist "Please choose PiZeros state" 44 76 16)
-TURN=$("${cmd[@]}" ${OPTIONS})
-
-if [ "$?" != 0 ]
+if [ $# -eq 0 ]
 then
-    exit
+    OPTIONS=" "
+    for PIZEROSTATE in `clusterctrl status | tail -n 4`
+    do
+        PIZERO="${PIZEROSTATE:0:2}"
+        PIZERO_STATUS="${PIZEROSTATE:3:1}"
+
+        if [ "$PIZERO_STATUS" == "1" ]; then
+            OPTIONS+="$PIZERO on "
+        else
+            OPTIONS+="$PIZERO off "
+        fi
+    done
+
+    cmd=(dialog --stdout --no-items --nocancel --separate-output --ok-label "Turn PiZeros" --checklist "Please choose PiZeros state" 12 10 10)
+    TURN=$("${cmd[@]}" ${OPTIONS})
+
+    if [ "$?" != 0 ]
+    then
+        exit
+    fi
+else 
+    TURN=`ls /etc/clusterhat/on/`
 fi
 
 for PIZERO in p1 p2 p3 p4
@@ -31,10 +31,13 @@ do
     echo -n $PIZERO 
     if [[ $TURN == *"${PIZERO}"* ]]; then
         clusterctrl on $PIZERO
+        touch /etc/clusterhat/on/$PIZERO
+        rm -f /etc/clusterhat/off/$PIZERO
         echo on
     else 
         clusterctrl off $PIZERO
+        touch /etc/clusterhat/off/$PIZERO
+        rm -f /etc/clusterhat/on/$PIZERO
         echo off
     fi
 done
-

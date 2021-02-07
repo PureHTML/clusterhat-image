@@ -1,9 +1,10 @@
-debian/chtui						usr/sbin
-files/usr/sbin/cluster*					usr/sbin
+debian/chtui						sbin
+files/usr/sbin/cluster*					sbin
 files/usr/share/clusterctrl/default-clusterctrl 	etc/default/
 files/etc/udev/rules.d/90-clusterctrl.rules 		etc/udev/rules.d/
 files/usr/lib/systemd/system/clusterctrl-init.service 	usr/lib/systemd/system/
 files/usr/share/clusterctrl/python/ 			usr/share/clusterctrl/
 
+debian/clusterctl-state.service				/lib/systemd/system
 
-files/usr/share/clusterctrl/reconfig-usbboot		usr/sbin
+files/usr/share/clusterctrl/reconfig-usbboot		sbin
