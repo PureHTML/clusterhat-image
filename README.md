@@ -52,6 +52,7 @@ sudo /usr/sbin/chtui
 ![chtui](chtui.png?raw=true)
 
 
+Note: PiZero state is restored at the host boot using /lib/systemd/system/clusterctrl-state.service
 
 
 ## Building Cluster HAT Images
