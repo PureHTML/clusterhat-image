@@ -1,0 +1,40 @@
+#!/bin/bash
+
+OPTIONS=" "
+for PIZEROSTATE in `clusterctrl status | tail -n 4`
+do
+
+
+
+    PIZERO="${PIZEROSTATE:0:2}"
+    PIZERO_STATUS="${PIZEROSTATE:3:1}"
+
+    if [ "$PIZERO_STATUS" == "1" ]; then
+        OPTIONS+="$PIZERO on "
+    else
+        OPTIONS+="$PIZERO off "
+    fi
+    
+
+done
+
+cmd=(dialog --stdout --no-items --separate-output --ok-label "Turn PiZeros" --checklist "Please choose PiZeros state" 44 76 16)
+TURN=$("${cmd[@]}" ${OPTIONS})
+
+if [ "$?" != 0 ]
+then
+    exit
+fi
+
+for PIZERO in p1 p2 p3 p4
+do
+    echo -n $PIZERO 
+    if [[ $TURN == *"${PIZERO}"* ]]; then
+        clusterctrl on $PIZERO
+        echo on
+    else 
+        clusterctrl off $PIZERO
+        echo off
+    fi
+done
+

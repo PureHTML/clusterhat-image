@@ -2,7 +2,8 @@
 
 ![InAction](clusterhat.jpeg?raw=true)
 
-Scripts and files used to build Cluster HAT images from Raspbian.
+Scripts and files used to build [Cluster HAT](https://clusterhat.com/) images from [Raspbian](https://www.raspberrypi.org/software/operating-systems/).
+
 
 
 Installation
@@ -13,7 +14,7 @@ sudo apt install lsb-release wget
 echo "deb http://repo.vitexsoftware.cz $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vitexsoftware.list
 sudo wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg http://repo.vitexsoftware.cz/keyring.gpg
 sudo apt update
-sudo apt install clusterhat-image
+sudo apt install clusterhat-image clusterctl
 ```
 
 
@@ -35,7 +36,22 @@ To write all your reqied images you can use our write helper script
 ![X](writer.png?raw=true)
 
 
-Note: Please use https://github.com/Vitexus/gnome-multi-writer/releases/tag/3.35.91 version of Gnom MultiWriter
+Note: Please use https://github.com/Vitexus/gnome-multi-writer/releases/tag/3.35.91 version of Gnome MultiWriter
+
+ClusterCTL
+----------
+
+Install package **clusterctl** for /usr/sbin/clusterctl commad
+
+You can also turn several PiZeros using **chtui** command
+
+```
+sudo /usr/sbin/chtui
+```
+
+![chtui](chtui.png?raw=true)
+
+
 
 
 ## Building Cluster HAT Images

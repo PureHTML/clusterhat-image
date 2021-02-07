@@ -8,5 +8,8 @@
 %:
 	dh $@
 
-#override_dh_install:
-#	dh_install
+override_dh_install:
+	dh_install
+	mv debian/clusterctl/etc/default/default-clusterctrl debian/clusterctl/etc/default/clusterctrl
+	echo 'TYPE=c' >> debian/clusterctl/etc/default/clusterctrl
+
