@@ -14,7 +14,7 @@ Recommends: gnome-multi-writer|balena-etcher
 Description: Cluster Hat image builde
  Scripts and files used to build Cluster HAT images from Raspbian.
 
-Package: clusterctl
+Package: clusterctrl
 Architecture: all
 Multi-Arch: foreign
 Depends: ${misc:Depends}, ${shlibs:Depends},sudo,libusb-1.0-0-dev, python-usb, python-libusb1, python-smbus

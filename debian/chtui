@@ -33,11 +33,11 @@ do
         clusterctrl on $PIZERO
         touch /etc/clusterhat/on/$PIZERO
         rm -f /etc/clusterhat/off/$PIZERO
-        echo on
+        echo " on"
     else 
         clusterctrl off $PIZERO
         touch /etc/clusterhat/off/$PIZERO
         rm -f /etc/clusterhat/on/$PIZERO
-        echo off
+        echo " off"
     fi
 done
