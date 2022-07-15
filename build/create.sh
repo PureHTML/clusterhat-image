@@ -33,69 +33,92 @@ CNT=0
 
 # Check for Raspbian stretch
 if [ -f "$SOURCE/$VER-raspbian-stretch-lite.img" ];then
- SOURCES[$CNT]="$VER-raspbian-stretch-lite.img|$VER-$REV-ClusterCTRL-armhf-lite|LITE|STRETCH"
+ SOURCES[$CNT]="$VER-raspbian-stretch-lite.img|$VER-$REV-stretch-ClusterCTRL-armhf-lite|LITE|STRETCH"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspbian-stretch.img" ];then
- SOURCES[$CNT]="$VER-raspbian-stretch.img|$VER-$REV-ClusterCTRL-armhf|STD|STRETCH"
+ SOURCES[$CNT]="$VER-raspbian-stretch.img|$VER-$REV-stretch-ClusterCTRL-armhf|STD|STRETCH"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspbian-stretch-full.img" ];then
- SOURCES[$CNT]="$VER-raspbian-stretch-full.img|$VER-$REV-ClusterCTRL-armhf-full|FULL|STRETCH"
+ SOURCES[$CNT]="$VER-raspbian-stretch-full.img|$VER-$REV-stretch-ClusterCTRL-armhf-full|FULL|STRETCH"
  let CNT=$CNT+1
 fi
 
 # Check for Raspbian buster
 if [ -f "$SOURCE/$VER-raspbian-buster-lite.img" ];then
- SOURCES[$CNT]="$VER-raspbian-buster-lite.img|$VER-$REV-ClusterCTRL-armhf-lite|LITE|BUSTER"
+ SOURCES[$CNT]="$VER-raspbian-buster-lite.img|$VER-$REV-buster-ClusterCTRL-armhf-lite|LITE|BUSTER"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspbian-buster.img" ];then
- SOURCES[$CNT]="$VER-raspbian-buster.img|$VER-$REV-ClusterCTRL-armhf-std|STD|BUSTER"
+ SOURCES[$CNT]="$VER-raspbian-buster.img|$VER-$REV-buster-ClusterCTRL-armhf-std|STD|BUSTER"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspbian-buster-full.img" ];then
- SOURCES[$CNT]="$VER-raspbian-buster-full.img|$VER-$REV-ClusterCTRL-armhf-full|FULL|BUSTER"
+ SOURCES[$CNT]="$VER-raspbian-buster-full.img|$VER-$REV-buster-ClusterCTRL-armhf-full|FULL|BUSTER"
  let CNT=$CNT+1
 fi
 
 # Check for Raspberry Pi OS (old naming scheme)
 if [ -f "$SOURCE/$VER-raspios-buster-lite-armhf.img" ];then
- SOURCES[$CNT]="$VER-raspios-buster-lite-armhf.img|$VER-$REV-ClusterCTRL-armhf-lite|LITE|RASPIOS32BUSTER"
+ SOURCES[$CNT]="$VER-raspios-buster-lite-armhf.img|$VER-$REV-buster-ClusterCTRL-armhf-lite|LITE|RASPIOS32BUSTER"
  let CNT=$CNT+1
 fi
 #if [ -f "$SOURCE/$VER-raspios-buster-armhf.img" ];then
-# SOURCES[$CNT]="$VER-raspios-buster-armhf.img|$VER-$REV-ClusterCTRL-armhf|STD|RASPIOS32BUSTER"
+# SOURCES[$CNT]="$VER-raspios-buster-armhf.img|$VER-$REV-buster-ClusterCTRL-armhf|STD|RASPIOS32BUSTER"
 # let CNT=$CNT+1
 #fi
 if [ -f "$SOURCE/$VER-raspios-buster-full-armhf.img" ];then
- SOURCES[$CNT]="$VER-raspios-buster-full-armhf.img|$VER-$REV-ClusterCTRL-armhf-full|FULL|RASPIOS32BUSTER"
+ SOURCES[$CNT]="$VER-raspios-buster-full-armhf.img|$VER-$REV-buster-ClusterCTRL-armhf-full|FULL|RASPIOS32BUSTER"
  let CNT=$CNT+1
 fi
 
 # Check for Raspberry Pi OS
 if [ -f "$SOURCE/$VER-raspios-buster-armhf-lite.img" ];then
- SOURCES[$CNT]="$VER-raspios-buster-armhf-lite.img|$VER-$REV-ClusterCTRL-armhf-lite|LITE|RASPIOS32BUSTER"
+ SOURCES[$CNT]="$VER-raspios-buster-armhf-lite.img|$VER-$REV-buster-ClusterCTRL-armhf-lite|LITE|RASPIOS32BUSTER"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspios-buster-armhf.img" ];then
- SOURCES[$CNT]="$VER-raspios-buster-armhf.img|$VER-$REV-ClusterCTRL-armhf|STD|RASPIOS32BUSTER"
+ SOURCES[$CNT]="$VER-raspios-buster-armhf.img|$VER-$REV-buster-ClusterCTRL-armhf|STD|RASPIOS32BUSTER"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspios-buster-armhf-full.img" ];then
- SOURCES[$CNT]="$VER-raspios-buster-armhf-full.img|$VER-$REV-ClusterCTRL-armhf-full|FULL|RASPIOS32BUSTER"
+ SOURCES[$CNT]="$VER-raspios-buster-armhf-full.img|$VER-$REV-buster-ClusterCTRL-armhf-full|FULL|RASPIOS32BUSTER"
+ let CNT=$CNT+1
+fi
+if [ -f "$SOURCE/$VER-raspios-bullseye-armhf-lite.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bullseye-armhf-lite.img|$VER-$REV-bullseye-ClusterCTRL-armhf-lite|LITE|RASPIOS32BULLSEYE"
+ let CNT=$CNT+1
+fi
+if [ -f "$SOURCE/$VER-raspios-bullseye-armhf.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bullseye-armhf.img|$VER-$REV-bullseye-ClusterCTRL-armhf|STD|RASPIOS32BULLSEYE"
+ let CNT=$CNT+1
+fi
+if [ -f "$SOURCE/$VER-raspios-bullseye-armhf-full.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bullseye-armhf-full.img|$VER-$REV-bullseye-ClusterCTRL-armhf-full|FULL|RASPIOS32BULLSEYE"
  let CNT=$CNT+1
 fi
 
 # Check for Raspberry Pi OS 64-bit
 if [ -f "$SOURCE/$VER-raspios-buster-arm64.img" ];then
- SOURCES[$CNT]="$VER-raspios-buster-arm64.img|$VER-$REV-ClusterCTRL-arm64|STD|RASPIOS64BUSTER"
+ SOURCES[$CNT]="$VER-raspios-buster-arm64.img|$VER-$REV-buster-ClusterCTRL-arm64|STD|RASPIOS64BUSTER"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspios-buster-arm64-lite.img" ];then
- SOURCES[$CNT]="$VER-raspios-buster-arm64-lite.img|$VER-$REV-ClusterCTRL-arm64-lite|LITE|RASPIOS64BUSTER"
+ SOURCES[$CNT]="$VER-raspios-buster-arm64-lite.img|$VER-$REV-buster-ClusterCTRL-arm64-lite|LITE|RASPIOS64BUSTER"
  let CNT=$CNT+1
 fi
+if [ -f "$SOURCE/$VER-raspios-bullseye-arm64.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bullseye-arm64.img|$VER-$REV-bullseye-ClusterCTRL-arm64|STD|RASPIOS64BULLSEYE"
+ let CNT=$CNT+1
+fi
+if [ -f "$SOURCE/$VER-raspios-bullseye-arm64-lite.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bullseye-arm64-lite.img|$VER-$REV-bullseye-ClusterCTRL-arm64-lite|LITE|RASPIOS64BULLSEYE"
+ let CNT=$CNT+1
+fi
+# Check for Raspberry Pi OS 64-bit (bullseye)
+
+
 
 if [ $CNT -eq 0 ];then
  echo "No source file(s) found"
@@ -116,12 +139,7 @@ if ! [ "$MACHINE" = "armv7l" -o "$MACHINE" = "aarch64" ] ;then
  fi
 fi
 
-# Make sure we have git and zerofree
-which git >/dev/null 2>&1
-if [ $? -eq 1 ];then
- echo "Installing git"
- apt install -y git
-fi
+# Make sure we have zerofree
 which zerofree >/dev/null 2>&1
 if [ $? -eq 1 ];then
  echo "Installing zerofree"
@@ -192,12 +210,15 @@ EOF
   if [ $UPGRADE = "1" ];then
    chroot $MNT /bin/bash -c 'APT_LISTCHANGES_FRONTEND=none apt -y dist-upgrade'
   fi
-  
-  if [ $RELEASE = "BUSTER" -o $RELEASE = "RASPIOS32BUSTER" -o $RELEASE = "RASPIOS64BUSTER" ];then
-   INSTALLEXTRA+=" initramfs-tools-core"
+
+  if [ $RELEASE = "STRETCH" ];then
+   INSTALLEXTRA+=" wiringpi python-smbus python-usb python-libusb1"
+  elif [ $RELEASE = "BUSTER" -o $RELEASE = "RASPIOS32BUSTER" -o $RELEASE = "RASPIOS64BUSTER" \
+    -o $RELEASE = "RASPIOS32BULLSEYE" -o $RELEASE = "RASPIOS64BULLSEYE" ];then
+   INSTALLEXTRA+=" initramfs-tools-core python3-smbus python3-usb python3-libusb1"
   fi
 
-  chroot $MNT apt -y install rpiboot bridge-utils wiringpi screen minicom python-smbus subversion git libusb-1.0-0-dev nfs-kernel-server python-usb python-libusb1 busybox $INSTALLEXTRA
+  chroot $MNT apt -y install rpiboot bridge-utils screen minicom subversion git libusb-1.0-0-dev nfs-kernel-server busybox $INSTALLEXTRA
 
   # Setup ready for iptables for NAT for NAT/WiFi use
   # Preseed answers for iptables-persistent install
@@ -205,6 +226,12 @@ EOF
   chroot $MNT /bin/bash -c "echo 'iptables-persistent iptables-persistent/autosave_v6 boolean false' | debconf-set-selections"
 
   chroot $MNT /bin/bash -c 'APT_LISTCHANGES_FRONTEND=none apt -y install iptables-persistent'
+
+  # Remove ModemManager
+  chroot $MNT systemctl disable ModemManager.service
+  chroot $MNT systemctl stop ModemManager.service
+  chroot $MNT apt -y purge modemmanager
+  chroot $MNT apt-mark hold modemmanager
 
   echo '#net.ipv4.ip_forward=1 # ClusterCTRL' >> $MNT/etc/sysctl.conf
   cat << EOF >> $MNT/etc/iptables/rules.v4
@@ -229,7 +256,14 @@ COMMIT
 EOF
 
   # Set custom password
-  chroot $MNT /bin/bash -c "echo 'pi:$PASSWORD' | chpasswd"
+  if [ -f $MNT/usr/bin/rename-user ];then
+   if [ ! -z $USERNAME ] && [ ! -z $PASSWORD ];then
+    PASSWORDE=$(echo "$PASSWORD" | openssl passwd -6 -stdin)
+    echo "$USERNAME:$PASSWORDE" >> $MNT/boot/userconf.txt
+   fi
+  else
+   chroot $MNT /bin/bash -c "echo 'pi:$PASSWORD' | chpasswd"
+  fi
 
   # Should we enable SSH?
   if [ $ENABLESSH = "1" ];then
@@ -287,7 +321,7 @@ EOF
 
   # Enable console on UART
   if [ "$SERIALAUTOLOGIN" = "1" ];then
-   if [ $RELEASE = "BUSTER" -o $RELEASE = "RASPIOS32BUSTER" -o $RELEASE = "RASPIOS64BUSTER" ];then
+   if [ $RELEASE = "BUSTER" -o $RELEASE = "RASPIOS32BUSTER" -o $RELEASE = "RASPIOS64BUSTER" -o $RELEASE = "RASPIOS32BULLSEYE" -o $RELEASE = "RASPIOS64BULLSEYE" ];then
     mkdir -p $MNT/etc/systemd/system/serial-getty@ttyS0.service.d/
     cat > $MNT/etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf << EOF
 [Service]
@@ -304,7 +338,8 @@ EOF
   (tar --exclude=.git -cC ../files/ -f - .) | (chroot $MNT tar -xC /)
 
   # Disable the auto filesystem resize and convert to bridged controller
-  sed -i "s# init=.*# init=/usr/sbin/reconfig-clusterctrl cbridge#" $MNT/boot/cmdline.txt
+  sed -i 's# init=/usr/lib/raspi-config/init_resize.sh##' $MNT/boot/cmdline.txt
+  sed -i 's#$# init=/usr/sbin/reconfig-clusterctrl cbridge#' $MNT/boot/cmdline.txt
 
   # Setup directories for rpiboot
   mkdir -p $MNT/var/lib/clusterctrl/boot
@@ -333,6 +368,11 @@ EOF
   C=`grep -c "dtoverlay=dwc2,dr_mode=peripheral" $MNT/boot/config.txt`
   if [ $C -eq 0  ];then
    echo -e "# Load overlay to allow USB Gadget devices\n#dtoverlay=dwc2,dr_mode=peripheral" >> $MNT/boot/config.txt
+   echo -e "# Use XHCI USB 2 Controller for Cluster HAT Controllers\n[pi4]\notg_mode=1 # Controller only\n[all]\n" >> $MNT/boot/config.txt
+  fi
+
+  if [ $RELEASE = "RASPIOS64BULLSEYE" ] && [ ! -f "$MNT/boot/bcm2710-rpi-zero-2.dtb" ];then
+   cp $MNT/boot/bcm2710-rpi-3-b.dtb $MNT/boot/bcm2710-rpi-zero-2.dtb
   fi
 
   rm -f $MNT/etc/ssh/*key*
@@ -353,6 +393,11 @@ EOF
   sleep 5
 
   losetup -d $LOOP
+
+  if [ "$FINALISEIMG" != "" ];then
+   "$FINALISEIMG" "$DEST/$DESTFILENAME-CBRIDGE.img"
+  fi
+
  fi
  
  # Build the usbboot image if required
@@ -361,16 +406,16 @@ EOF
  if [ ${!USBBOOT} = "1" ] && [ -f "$DEST/$DESTFILENAME-CBRIDGE.img" ] && [ ! -f "$DEST/$DESTFILENAME-usbboot.tar.xz" ] && [ ! -f "$DEST/$DESTFILENAME-usbboot.tar" ];then
   echo "Creating $VARNAME usbboot"
 
+  if [ -e "$MNT2/root" ];then
+   echo "ERROR: usbboot temp directory $MNT2/root already exists"
+   exit
+  fi
+
   LOOP=`losetup -rfP --show $DEST/$DESTFILENAME-CBRIDGE.img`
   sleep 5
 
   mount -o ro ${LOOP}p2 $MNT
   mount -o ro ${LOOP}p1 $MNT/boot
-
-  if [ -e "$MNT2/root" ];then
-   echo "ERROR: usbboot temp directory $MNT2/root already exists"
-   exit
-  fi
 
   mkdir "$MNT2/root"
   tar -cC "$MNT" .|tar -xC "$MNT2/root/"
@@ -390,10 +435,10 @@ EOF
   chroot $MNT2/root/ systemctl disable clusterctrl-rpiboot
   sed -i "s/^#dtoverlay=dwc2,dr_mode=peripheral$/dtoverlay=dwc2,dr_mode=peripheral/" $MNT2/root/boot/config.txt
   echo -e "dwc2\n8021q\nuio_pdrv_genirq\nuio\nusb_f_acm\nu_serial\nusb_f_ecm\nu_ether\nlibcomposite\nudc_core\nipv6\nusb_f_rndis\n" >> $MNT2/root/etc/initramfs-tools/modules
-  if [ $RELEASE = "RASPIOS64BUSTER" ];then
+  if [ $RELEASE = "RASPIOS64BUSTER" -o $RELEASE = "RASPIOS64BULLSEYE" ];then
    echo -e "\n[all]\ninitramfs initramfs8.img\ndtparam=sd_poll_once=on\n" >> $MNT2/root/boot/config.txt
   else 
-   echo -e "\n[pi0]\ninitramfs initramfs.img\n[pi1]\ninitramfs initramfs.img\n[pi2]\ninitramfs initramfs7.img\n[pi3]\ninitramfs initramfs7.img\n[pi4]\ninitramfs initramfs7l.img\n[all]\ndtparam=sd_poll_once=on\n" >> $MNT2/root/boot/config.txt
+   echo -e "\n[pi0]\ninitramfs initramfs.img\n[pi02]\ninitramfs initramfs7.img\n[pi1]\ninitramfs initramfs.img\n[pi2]\ninitramfs initramfs7.img\n[pi3]\ninitramfs initramfs7.img\n[pi4]\ninitramfs initramfs7l.img\n[all]\ndtparam=sd_poll_once=on\n" >> $MNT2/root/boot/config.txt
   fi
   chroot $MNT2/root/ /bin/bash -c "raspi-config nonint do_serial 0"
   sed -i "s# init=.*##" $MNT2/root/boot/cmdline.txt
@@ -402,8 +447,13 @@ EOF
   sed -i "s#^COMPRESS=.*#COMPRESS=xz#" $MNT2/root/etc/initramfs-tools/initramfs.conf
   sed -i "s#root=.* rootfstype=ext4#root=/dev/nfs nfsroot=172.19.180.254:/var/lib/clusterctrl/nfs/p252 rw ip=172.19.180.252:172.19.180.254::255.255.255.0:p252:usb0.10:static#" $MNT2/root/boot/cmdline.txt
 
-  ln -fs /lib/systemd/system/getty@.service \
-    $MNT2/root/etc/systemd/system/getty.target.wants/getty@ttyGS0.service
+  if [ -f $MNT2/usr/lib/systemd/system/getty@.service ] ;then
+   chroot $MNT2/root/ /bin/bash ln -fs /usr/lib/systemd/system/getty@.service \
+     $MNT2/root/etc/systemd/system/getty.target.wants/getty@ttyGS0.service
+  elif [ -f $MNT2/lib/systemd/system/getty@.service ];then
+   chroot $MNT2/root/ /bin/bash ln -fs /lib/systemd/system/getty@.service \
+    $MNT2/root/etc/systemd/system/getty.target.wants/getty@ttyGS0.service 
+  fi
 
   # Enable console on gadget serial
   if [ "$SERIALAUTOLOGIN" = "1" ];then
