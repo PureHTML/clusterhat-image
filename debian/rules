@@ -11,5 +11,6 @@
 override_dh_install:
 	dh_install
 	mv debian/clusterctrl/etc/default/default-clusterctrl debian/clusterctrl/etc/default/clusterctrl
+	mkdir -p debian/clusterctrl/etc/clusterhat/on/ debian/clusterctrl/etc/clusterhat/off
 	echo 'TYPE=c' >> debian/clusterctrl/etc/default/clusterctrl
 
