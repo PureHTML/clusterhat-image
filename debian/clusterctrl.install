@@ -5,6 +5,7 @@ files/etc/udev/rules.d/90-clusterctrl.rules 		etc/udev/rules.d/
 files/usr/lib/systemd/system/clusterctrl-init.service 	usr/lib/systemd/system/
 files/usr/share/clusterctrl/python/ 			usr/share/clusterctrl/
 
-debian/clusterctrl-state.service				/lib/systemd/system
+files/usr/lib/systemd/system/clusterctrl-init.service   lib/systemd/system
+debian/clusterctrl-state.service				        lib/systemd/system
 
 files/usr/share/clusterctrl/reconfig-usbboot		sbin
