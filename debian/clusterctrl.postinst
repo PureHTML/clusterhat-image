@@ -22,8 +22,8 @@ case "$1" in
     configure)
 
 	udevadm control --reload-rules
-	systemctl enable clusterctrl-init
-	systemctl enable clusterctrl-state.service
+    update-rc.d clusterctrl-init enable >/dev/null
+    update-rc.d clusterctrl-state enable >/dev/null
 	raspi-config nonint do_i2c 0
 
     ;;
