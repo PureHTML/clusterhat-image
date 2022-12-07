@@ -10,6 +10,7 @@ Package: clusterhat-image
 Architecture: all
 Multi-Arch: foreign
 Depends: ${misc:Depends}, ${shlibs:Depends},sudo,wget,unzip,coreutils,e2fsprogs,fdisk,parted,mount,sed,dialog
+Pre-Depends: insserv
 Recommends: gnome-multi-writer|balena-etcher
 Description: Cluster Hat image builde
  Scripts and files used to build Cluster HAT images from Raspbian.
