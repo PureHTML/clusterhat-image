@@ -20,10 +20,10 @@ set -e
 
 case "$1" in
     configure)
-	udevadm control --reload-rules
-        insserv clusterctrl-init
-	insserv clusterctrl-state
-	raspi-config nonint do_i2c 0
+	udevadm control --reload-rules || true
+        insserv clusterctrl-init || true
+	insserv clusterctrl-state || true
+	raspi-config nonint do_i2c 0 || true
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
