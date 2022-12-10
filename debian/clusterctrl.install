@@ -2,7 +2,9 @@ debian/chtui						sbin
 files/usr/sbin/cluster*					sbin
 files/usr/share/clusterctrl/default-clusterctrl 	etc/default/
 files/etc/udev/rules.d/*		 		etc/udev/rules.d/
+files/etc/minicom/*					etc/minicom/
 files/usr/lib/systemd/system/*			 	usr/lib/systemd/system
 files/usr/share/clusterctrl/python/ 			usr/share/clusterctrl/
 debian/clusterctrl-state.service		        usr/lib/systemd/system
 files/usr/share/clusterctrl/reconfig-usbboot		sbin
+files/etc/kernel/postinst.d/clusterctrl			etc/kernel/postinst.d

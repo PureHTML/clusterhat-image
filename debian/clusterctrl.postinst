@@ -21,8 +21,8 @@ set -e
 case "$1" in
     configure)
 	udevadm control --reload-rules || true
-        insserv clusterctrl-init || true
-	insserv clusterctrl-state || true
+        #insserv clusterctrl-init || true
+	#insserv clusterctrl-state || true
 	raspi-config nonint do_i2c 0 || true
     ;;
 
