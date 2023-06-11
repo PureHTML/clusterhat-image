@@ -6,27 +6,13 @@ source ./config.sh
 
 ARCH=arhmf
 
-VER="2021-01-11"
 DIST="buster"
-IMGDIR="raspios_lite_armhf-2021-01-12"
-
-DIST="buster"
-VER="2021-01-11"
-IMGDIR="raspios_lite_armhf-2021-01-12"
+VER="2023-05-03"
+IMGDIR="raspios_lite_armhf-${VER}"
 REPO="https://downloads.raspberrypi.org/raspios_lite_armhf"
 EDITION="raspios"
-IMGNAME="${VER}-${EDITION}-${DIST}-${ARCH}-lite.zip"
-IMGURL="${REPO}/images/${IMGNAME}"
-IMGURL="https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip"
-
-
-#DIST="stretch"
-#VER="2017-08-16"
-#IMGDIR="raspbian_lite-2017-08-17"
-#REPO="http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian_lite"
-#EDITION="raspbian"
-#IMGNAME="2017-08-16-raspbian-stretch-lite.zip"
-#IMGURL="http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian_lite/images/raspbian_lite-2017-08-17/2017-08-16-raspbian-stretch-lite.zip"
+IMGNAME="${VER}-${EDITION}-${DIST}-${ARCH}-lite.img.xz"
+IMGURL="${REPO}/images/raspios_lite_armhf-${VER}/${IMGNAME}"
 
 mkdir -p $SOURCE
 mkdir -p $DEST
@@ -40,7 +26,7 @@ if [ ! -f $SOURCE/$IMGNAME ]; then
     echo Getting $IMGURL to $SOURCE
     cd $SOURCE
 	sudo wget -c "$IMGURL"  -O $IMGNAME
-	sudo unzip $IMGNAME
+	sudo tar xf $IMGNAME
     cd ..
 else
     echo We have $IMGURL from $SOURCE

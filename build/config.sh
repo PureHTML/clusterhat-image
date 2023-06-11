@@ -34,12 +34,12 @@ SERIALAUTOLOGIN=0
 UPGRADE=1
 
 # Max Px nodes to build for lite/std/full
-MAXPLITE=4
+MAXPLITE=8
 MAXPSTD=0
 MAXPFULL=0
 
 # Do we build a usbboot/rpiboot image (NFSROOT)
-USBBOOTLITE=0
+USBBOOTLITE=1
 USBBOOTSTD=0
 USBBOOTFULL=0
 
