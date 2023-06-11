@@ -3,3 +3,12 @@ build/img
 build/dest
 build/mnt
 build/mnt2
+debian/clusterhat-image
+debiab/.debhelper
+debian/clusterctrl.debhelper.log
+debian/clusterctrl.substvars
+debian/clusterhat-image.debhelper.log
+debian/files
+debian/clusterctrl
+debian/debhelper-build-stamp
+debian/clusterhat-image.substvars
