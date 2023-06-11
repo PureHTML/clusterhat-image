@@ -36,21 +36,20 @@ iface br0 inet manual
 
 # USB Gadget Ethernet node (controller) interfaces
 
-' > $NET
+' >$NET
 
-
-for ((P=1;P<=252;P++));do
- echo "## Pi node P${P}"  >> $NET
- # SD boot
- echo "# SD boot
+for ((P = 1; P <= 252; P++)); do
+        echo "## Pi node P${P}" >>$NET
+        # SD boot
+        echo "# SD boot
 allow-hotplug ethpi${P}
 iface ethpi${P} inet manual
         pre-up ifup br0
         pre-up brctl addif br0 ethpi${P}
 	up ip link set dev ethpi${P} up
-" >> $NET
- # usbboot
- echo "# usbboot
+" >>$NET
+        # usbboot
+        echo "# usbboot
 # Internal network (VLAN 10)
 allow-hotplug ethupi${P}.10
 iface ethupi${P}.10 inet manual
@@ -64,7 +63,7 @@ iface ethupi${P} inet manual
 	pre-up brctl addif br0 ethupi${P}
 	up ip link set dev ethupi${P} up
 	post-up ip link add link ethupi${P} name ethupi${P}.10 type vlan id 10
-" >> $NET
+" >>$NET
 
 done
 
