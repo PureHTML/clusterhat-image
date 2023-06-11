@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"
+cd /usr/lib/clusterhat-image/
 
 source ./config.sh
 
@@ -31,7 +31,7 @@ else
     ls -la $SOURCE/$IMGNAME
 fi
 
-cd "$(dirname "$0")"
+cd /usr/lib/clusterhat-image/
 
 sudo ./create.sh $VER
 
