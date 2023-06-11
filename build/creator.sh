@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 source ./config.sh
 
-ARCH=arhmf
+ARCH=armhf
 
 DIST="bullseye"
 VER="2023-05-03"
