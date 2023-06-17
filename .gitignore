@@ -4,7 +4,7 @@ build/dest
 build/mnt
 build/mnt2
 debian/clusterhat-image
-debiab/.debhelper
+debiab/.debhelper/
 debian/clusterctrl.debhelper.log
 debian/clusterctrl.substvars
 debian/clusterhat-image.debhelper.log
@@ -12,3 +12,9 @@ debian/files
 debian/clusterctrl
 debian/debhelper-build-stamp
 debian/clusterhat-image.substvars
+debian/.debhelper/generated/clusterctrl/dh_installchangelogs.dch.trimmed
+debian/.debhelper/generated/clusterctrl/installed-by-dh_install
+debian/.debhelper/generated/clusterhat-image/dh_installchangelogs.dch.trimmed
+debian/.debhelper/generated/clusterhat-image/installed-by-dh_install
+debian/.debhelper/generated/clusterhat-image/installed-by-dh_installdocs
+debian/.debhelper/generated/clusterctrl/installed-by-dh_installdocs
