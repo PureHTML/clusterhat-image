@@ -1,10 +1,32 @@
 debian/chtui						sbin
-files/usr/sbin/cluster*					sbin
-files/usr/share/clusterctrl/default-clusterctrl 	etc/default/
-files/etc/udev/rules.d/*		 		etc/udev/rules.d/
-files/etc/minicom/*					etc/minicom/
-files/usr/lib/systemd/system/*			 	usr/lib/systemd/system
-files/usr/share/clusterctrl/python/ 			usr/share/clusterctrl/
 debian/clusterctrl-state.service		        usr/lib/systemd/system
-files/usr/share/clusterctrl/reconfig-usbboot		sbin
-files/etc/kernel/postinst.d/clusterctrl			etc/kernel/postinst.d
+
+files/usr/share/clusterctrl/issue.p					/usr/share/clusterctrl/
+files/usr/share/clusterctrl/default-clusterctrl				/usr/share/clusterctrl/
+files/usr/share/clusterctrl/reconfig-usbboot				/usr/share/clusterctrl/
+files/usr/share/clusterctrl/python/clusterctrl-setup-gadget.sh		/usr/share/clusterctrl/
+files/usr/share/clusterctrl/python/xra1200.py				/usr/share/clusterctrl/
+files/usr/share/clusterctrl/issue.c					/usr/share/clusterctrl/
+files/usr/share/clusterctrl/interfaces.cnat				/usr/share/clusterctrl/
+files/usr/share/clusterctrl/interfaces.cbridge				/usr/share/clusterctrl/
+files/usr/sbin/clusterctrl						/usr/sbin/
+files/usr/sbin/composite-clusterctrl					/usr/sbin/
+files/usr/sbin/reconfig-clusterctrl					/usr/sbin/
+files/usr/lib/systemd/system/clusterctrl-composite.service		/usr/lib/systemd/system/
+files/usr/lib/systemd/system/clusterctrl-init.service			/usr/lib/systemd/system/
+files/usr/lib/systemd/system/clusterctrl-rpiboot.service		/usr/lib/systemd/system/
+files/usr/share/initramfs-tools/scripts/nfs-top/00_clusterctrl		/usr/share/initramfs-tools/scripts/nfs-top/
+files/usr/share/initramfs-tools/hooks/clusterctrl			/usr/share/initramfs-tools/hooks/
+files/usr/share/applications/clusterhat.desktop				/usr/share/applications/
+
+
+files/etc/kernel/postinst.d/clusterctrl					/etc/kernel/postinst.d/
+files/etc/udev/rules.d/90-clusterctrl.rules				/etc/udev/rules.d/
+files/etc/minicom/minirc.p3						/etc/minicom/
+files/etc/minicom/minirc.p4						/etc/minicom/
+files/etc/minicom/minirc.p2						/etc/minicom/
+files/etc/minicom/minirc.p1						/etc/minicom/
+files/etc/minicom/minirc.p5						/etc/minicom/
+files/usr/sbin/xclusterhat						/usr/sbin/
+files/usr/sbin/usbboot-init						/usr/sbin/
+files/usr/sbin/copyMAC							/usr/sbin/

@@ -1,17 +1,8 @@
 debian/clusterhat-creator		usr/bin/
 build/*					usr/lib/clusterhat-image/
+
 debian/config-local.sh				usr/lib/clusterhat-image/
 build/tools/create-interfaces.sh		usr/lib/clusterhat-image/tools/
-files/etc/kernel/postinst.d/*			usr/share/clusterhat-image/etc/kernel/postinst.d/
-files/etc/minicom/*				usr/share/clusterhat-image/etc/minicom/
-files/etc/udev/rules.d/*			usr/share/clusterhat-image/etc/udev/rules.d/
-files/usr/lib/systemd/system/*			usr/share/clusterhat-image/usr/lib/systemd/system/
-files/usr/sbin/*				usr/share/clusterhat-image/usr/sbin/
-files/usr/share/applications/clusterhat.desktop	usr/share/clusterhat-image/usr/share/applications/
-files/usr/share/clusterctrl/*			usr/share/clusterhat-image/usr/share/clusterctrl/
-files/usr/share/clusterctrl/python/*		usr/share/clusterhat-image/usr/share/clusterctrl/python/
-files/usr/share/clusterctrl/*			usr/share/clusterhat-image/usr/share/clusterctrl/
-files/usr/share/initramfs-tools/hooks/clusterctrl	usr/share/clusterhat-image/usr/share/initramfs-tools/hooks/
-files/usr/share/initramfs-tools/scripts/nfs-top/00_clusterctrl	usr/share/clusterhat-image/usr/share/initramfs-tools/scripts/nfs-top/
+
 LICENSE		usr/share/doc/clusterhar-image/
 README.md	usr/share/doc/clusterhat-image/
