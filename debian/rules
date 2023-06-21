@@ -10,4 +10,5 @@
 
 override_dh_install:
 	dh_install
-	mkdir -p debian/clusterctrl/etc/clusterhat/on/ debian/clusterctrl/etc/clusterhat/off
+	mkdir -p debian/clusterctrl/etc/clusterhat/on/ debian/clusterctrl/etc/clusterhat/off debian/clusterctrl/etc/default
+	cp files/usr/share/clusterctrl/default-clusterctrl debian/clusterctrl/etc/default/clusterctrl
