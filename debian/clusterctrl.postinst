@@ -24,7 +24,7 @@ case "$1" in
         #insserv clusterctrl-init || true
 	#insserv clusterctrl-state || true
 	raspi-config nonint do_i2c 0 || true
-    echo "init=/usr/sbin/reconfig-clusterhat c" >> /boot/cmdline.txt
+    # echo " init=/usr/sbin/reconfig-clusterhat c " >> /boot/cmdline.txt
     echo "Reboot to complete clusterctrl installation"
     ;;
 
