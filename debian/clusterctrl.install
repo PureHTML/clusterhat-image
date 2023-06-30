@@ -4,8 +4,8 @@ debian/clusterctrl-state.service		        usr/lib/systemd/system
 files/usr/share/clusterctrl/issue.p					/usr/share/clusterctrl/
 files/usr/share/clusterctrl/default-clusterctrl				/usr/share/clusterctrl/
 files/usr/share/clusterctrl/reconfig-usbboot				/usr/share/clusterctrl/
-files/usr/share/clusterctrl/python/clusterctrl-setup-gadget.sh		/usr/share/clusterctrl/
-files/usr/share/clusterctrl/python/xra1200.py				/usr/share/clusterctrl/
+files/usr/share/clusterctrl/python/clusterctrl-setup-gadget.sh		/usr/share/clusterctrl/python/
+files/usr/share/clusterctrl/python/xra1200.py				/usr/share/clusterctrl/python/
 files/usr/share/clusterctrl/issue.c					/usr/share/clusterctrl/
 files/usr/share/clusterctrl/interfaces.cnat				/usr/share/clusterctrl/
 files/usr/share/clusterctrl/interfaces.cbridge				/usr/share/clusterctrl/
