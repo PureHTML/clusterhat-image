@@ -445,6 +445,9 @@ EOF
     sed -i "s#^COMPRESS=.*#COMPRESS=xz#" $MNT2/root/etc/initramfs-tools/initramfs.conf
     sed -i "s#root=.* rootfstype=ext4#root=/dev/nfs nfsroot=172.19.180.254:/var/lib/clusterctrl/nfs/p252 rw ip=172.19.180.252:172.19.180.254::255.255.255.0:p252:usb0.10:static#" $MNT2/root/boot/cmdline.txt
 
+    mkdir -p $MNT2/root/usr/share/clusterctrl/
+    cp /usr/share/clusterctrl/reconfig-usbboot $MNT2/root/usr/share/clusterctrl/reconfig-usbboot
+
     if [ -f $MNT2/usr/lib/systemd/system/getty@.service ]; then
       chroot $MNT2/root/ /bin/bash ln -fs /usr/lib/systemd/system/getty@.service \
         $MNT2/root/etc/systemd/system/getty.target.wants/getty@ttyGS0.service
