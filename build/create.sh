@@ -203,20 +203,23 @@ EOF
 
     chroot $MNT apt -y purge wolfram-engine
 
+    echo Adding VitexSoftware repo
+    chroot $MNT apt -y install lsb-release wget apt-transport-https bzip2
+    chroot $MNT 'echo "deb http://repo.vitexsoftware.com  $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/vitexsoftware.list'
+
     # Get any updates / install and remove pacakges
     chroot $MNT apt update -y
     if [ $UPGRADE = "1" ]; then
       chroot $MNT /bin/bash -c 'APT_LISTCHANGES_FRONTEND=none apt -y dist-upgrade'
     fi
 
-    if [ $RELEASE = "STRETCH" ]; then
-      INSTALLEXTRA+=" wiringpi python-smbus python-usb python-libusb1"
-    elif [ $RELEASE = "bullseye" -o $RELEASE = "RASPIOS32bullseye" -o $RELEASE = "RASPIOS64bullseye" \
+    if [ $RELEASE = "bullseye" -o $RELEASE = "RASPIOS32bullseye" -o $RELEASE = "RASPIOS64bullseye" \
       -o $RELEASE = "RASPIOS32BULLSEYE" -o $RELEASE = "RASPIOS64BULLSEYE" ]; then
-      INSTALLEXTRA+=" initramfs-tools-core python3-smbus python3-usb python3-libusb1"
+      INSTALLEXTRA+=" initramfs-tools-core python3-smbus python3-usb python3-libusb1 clusterctrl"
     fi
 
     chroot $MNT apt -y install rpiboot bridge-utils screen minicom subversion git libusb-1.0-0-dev nfs-kernel-server busybox $INSTALLEXTRA
+    
 
     # Setup ready for iptables for NAT for NAT/WiFi use
     # Preseed answers for iptables-persistent install

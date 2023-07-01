@@ -9,7 +9,7 @@ Homepage: https://github.com/PureHTML/clusterhat-image
 Package: clusterhat-image
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${shlibs:Depends},sudo,wget,unzip,coreutils,e2fsprogs,fdisk,parted,mount,sed,dialog, xz-utils
+Depends: ${misc:Depends}, ${shlibs:Depends},sudo,wget,unzip,coreutils,e2fsprogs,fdisk,parted,mount,sed,dialog, xz-utils, qemu-user-static
 Recommends: minicom
 Description: Cluster Hat image builde
  Scripts and files used to build Cluster HAT images from Raspbian.
@@ -24,7 +24,7 @@ Description: Cluster Hat image builde
 Package: clusterctrl
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${shlibs:Depends},sudo, python|python3, libusb-1.0-0-dev, python-usb|python3-usb, python-libusb1|python3-libusb1, python-smbus|python3-smbus,dialog
+Depends: ${misc:Depends}, ${shlibs:Depends},sudo, python|python3, libusb-1.0-0-dev, python-usb|python3-usb, python-libusb1|python3-libusb1, python-smbus|python3-smbus,dialog, iptables-persistent
 Description: manage PiZeros on ClusterHat
  From the Controller Pi power to the Pi Zeros can be controlled using the 
  clusterctrl command on our configured images
