@@ -531,7 +531,10 @@ if( args == 2 and sys.argv[1] == 'init'):
 					# If the link already exists remove it
 					if os.path.islink(nfsboot+path):
 						os.unlink(nfsboot+path)
-					os.symlink(nfsroot+'p'+p+"/boot/", nfsboot+path)
+					if os.path.isdir(nfsroot+'p'+p+"/boot/firmware"):
+						os.symlink(nfsroot+'p'+p+"/boot/firmware/", nfsboot+path)
+					else:
+						os.symlink(nfsroot+'p'+p+"/boot/", nfsboot+path)
 
 ##############
 ## End Init ##
@@ -659,9 +662,11 @@ elif ( args > 2 and ( sys.argv[1] == "on" or sys.argv[1] == "off" ) ):
 						send_cmd( c, CMD_GET_PSTATUS, zero-lastpi+c[3] )
 						# Only turn on/delay if it's currently off
 						if( read_reg( c, REG_DATA0 )==0 ):
+							send_cmd(c, CMD_ALERT_ON, zero-lastpi+c[3])
 							send_cmd(c, CMD_ON, zero-lastpi+c[3])
 							if(actioned<len(zeros)): time.sleep(delay)
 						actioned+=1
+						send_cmd(c, CMD_ALERT_OFF, zero-lastpi+c[3])
 					else:
 						send_cmd(c, CMD_OFF, zero-lastpi+c[3])
 					break
