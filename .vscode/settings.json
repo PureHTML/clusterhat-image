@@ -13,6 +13,11 @@
         "statusBar.debuggingForeground": "#FFFFFF",
         "tab.activeBorder": "#1bc6aa",
         "iLoveWorkSpaceColors": true,
-        "iLoveWorkSpaceRandom": false
+        "iLoveWorkSpaceRandom": false,
+        "activityBar.inactiveForeground": "#b4b4b4",
+        "activityBar.activeBorder": "#9ec9a6",
+        "activityBar.activeBackground": "#D3B1C2",
+        "activityBar.border": "#D3B1C2",
+        "statusBar.border": "#D3B1C2"
     }
 }

@@ -2,10 +2,10 @@
 # ClusterCTRL
 #
 
-# To reconfigure the type append "quiet init=/usr/sbin/reconfig-clusterctrl <type>" to the end of the first line of /boot/cmdline.txt
+# To reconfigure the type append "quiet init=/usr/sbin/reconfig/clusterhat <type>"
 #
 # where <type> is one of 
-# cbridge = controller (Bridged Network)
+# c = controller (Bridged Network)
 # cnat = controller (NAT Network - WiFi or Ethernet)
 # pX = node ( where X is between 1-252)
 #

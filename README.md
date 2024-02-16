@@ -72,8 +72,6 @@ The "2017-09-07" date above should be the date from the Raspbian/Raspberry Pi OS
 
 When building arm64 images you need to be on an arm64 machine.
 
-
-
 ## Cluster HAT Files
 
 The files/ directory contains the files extracted into the root filesystem of a Cluster HAT image.

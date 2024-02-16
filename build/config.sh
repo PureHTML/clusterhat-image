@@ -34,12 +34,12 @@ SERIALAUTOLOGIN=0
 UPGRADE=1
 
 # Max Px nodes to build for lite/std/full
-MAXPLITE=8
+MAXPLITE=4
 MAXPSTD=0
 MAXPFULL=0
 
 # Do we build a usbboot/rpiboot image (NFSROOT)
-USBBOOTLITE=1
+USBBOOTLITE=0
 USBBOOTSTD=0
 USBBOOTFULL=0
 
@@ -67,6 +67,8 @@ FINALISEIMG=""
 # Options to use with above command (-s for ex when using pishrink.sh)
 FINALISEIMGOPT=""
 
+# Use rsyslog
+USERSYSLOG=1
 
 # How many seconds to sleep for between each section
 SLEEP=5

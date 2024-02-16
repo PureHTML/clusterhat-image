@@ -18,3 +18,9 @@ debian/.debhelper/generated/clusterhat-image/dh_installchangelogs.dch.trimmed
 debian/.debhelper/generated/clusterhat-image/installed-by-dh_install
 debian/.debhelper/generated/clusterhat-image/installed-by-dh_installdocs
 debian/.debhelper/generated/clusterctrl/installed-by-dh_installdocs
+debian/clusterhat-image-writer.debhelper.log
+debian/clusterhat-image-writer
+debian/clusterhat-image-writer.substvars
+debian/clusterhat-image-writer.debhelper-build-stamp
+debian/.debhelper/
+
