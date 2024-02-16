@@ -1,6 +1,10 @@
-clusterhat-image (2019.09.26.3) UNRELEASED; urgency=low
+clusterhat-image (2024.02.16) UNRELEASED; urgency=low
 
+  [ CyberVitexus ]
   * Initial release.
   * 
 
- -- CyberVitexus <info@vitexsoftware.cz>  Sat, 06 Feb 2021 02:28:14 +0100
+  [ vitex ]
+  * xclusterhat removal
+
+ -- vitex <info@vitexsoftware.cz>  Fri, 16 Feb 2024 12:42:18 +0100
