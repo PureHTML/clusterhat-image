@@ -24,7 +24,7 @@ if [ ! -f $SOURCE/$IMGNAME ]; then
     echo Getting $IMGURL to $SOURCE
     cd $SOURCE
     sudo wget -c "$IMGURL" -O $IMGNAME
-    sudo xz --decompress $IMGNAME
+    sudo xz -v --decompress $IMGNAME
     cd ..
 else
     echo We have $IMGURL from $SOURCE
