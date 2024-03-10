@@ -24,7 +24,14 @@ case "$1" in
         #insserv clusterctrl-init || true
 	#insserv clusterctrl-state || true
 	raspi-config nonint do_i2c 0 || true
-    echo " init=/usr/sbin/reconfig-clusterctrl cbridge " >> /boot/cmdline.txt
+
+    if [ -d /boot/firmware ];then
+        BOOT="/boot/firmware"
+    else
+        BOOT="/boot"
+    fi
+
+    echo " init=/usr/sbin/reconfig-clusterctrl cbridge " >> ${BOOT}/cmdline.txt
     echo "Reboot to complete clusterctrl installation"
     ;;
 
