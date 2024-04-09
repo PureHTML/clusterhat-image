@@ -9,7 +9,7 @@ Homepage: https://github.com/PureHTML/clusterhat-image
 Package: clusterhat-image
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${shlibs:Depends},sudo,wget,unzip,coreutils,e2fsprogs,fdisk,parted,mount,sed,dialog, xz-utils, qemu-user-static
+Depends: ${misc:Depends}, ${shlibs:Depends},sudo,wget,unzip,coreutils,e2fsprogs,fdisk,parted,mount,sed,dialog, xz-utils, qemu-user-static, ifmetric
 Recommends: minicom
 Description: Cluster Hat image builder
  Scripts and files used to build Cluster HAT images from Raspbian.
