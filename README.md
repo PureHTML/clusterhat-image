@@ -27,17 +27,6 @@ clusterhat-creator
 ```
 to download initial images and build ClusterHat ones
 
-
-To write all your reqied images you can use our write helper script
-
-```shell
-/usr/lib/clusterhat-image/writer.sh
-```
-![X](writer.png?raw=true)
-
-
-Note: Please use https://github.com/Vitexus/gnome-multi-writer/releases/tag/3.35.91 version of Gnome MultiWriter
-
 ClusterCTL
 ----------
 
