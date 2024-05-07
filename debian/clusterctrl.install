@@ -11,14 +11,12 @@ files/usr/share/clusterctrl/issue.c					/usr/share/clusterctrl/
 files/usr/share/clusterctrl/interfaces.cnat				/usr/share/clusterctrl/
 files/usr/share/clusterctrl/interfaces.cbridge				/usr/share/clusterctrl/
 files/usr/share/clusterctrl/interfaces.bookworm.p			/usr/share/clusterctrl/
-files/usr/share/clusterctrl/reconfig-usbboot				/usr/share/clusterctrl/
 files/usr/sbin/clusterctrl						/usr/sbin/
 files/usr/sbin/composite-clusterctrl					/usr/sbin/
 files/usr/sbin/reconfig-clusterctrl					/usr/sbin/
 files/usr/lib/systemd/system/clusterctrl-composite.service		/usr/lib/systemd/system/
 files/usr/lib/systemd/system/clusterctrl-init.service			/usr/lib/systemd/system/
 files/usr/lib/systemd/system/clusterctrl-rpiboot.service		/usr/lib/systemd/system/
-files/usr/share/initramfs-tools/scripts/nfs-top/00_clusterctrl		/usr/share/initramfs-tools/scripts/nfs-top/
 files/usr/share/initramfs-tools/hooks/clusterctrl			/usr/share/initramfs-tools/hooks/
 
 

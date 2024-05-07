@@ -26,5 +26,12 @@ Architecture: all
 Multi-Arch: foreign
 Depends: ${misc:Depends}, ${shlibs:Depends},sudo, python|python3, libusb-1.0-0-dev, python-usb|python3-usb, python-libusb1|python3-libusb1, python-smbus|python3-smbus,dialog, iptables-persistent, i2c-tools
 Description: manage PiZeros on ClusterHat
- From the Controller Pi power to the Pi Zeros can be controlled using the 
+ From the Controller Pi power to the Pi Zeros can be controlled using the
  clusterctrl command on our configured images
+
+Package: clusterctrl-usbboot
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends},clusterctrl, nfs-kernel-server, rpiboot
+Description: boot PiZeros on ClusterHat from USB
+  Boot PiZeros on ClusterHat withouth SD card from NFS on Controller Pi
