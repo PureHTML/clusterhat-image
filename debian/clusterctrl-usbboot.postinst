@@ -20,7 +20,8 @@ set -e
 
 case "$1" in
     configure)
-        invoke-rc.d clusterctrl-rpiboot enable
+        #invoke-rc.d clusterctrl-rpiboot enable
+	systemctl enable clusterctrl-rpiboot.service
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
