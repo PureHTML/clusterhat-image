@@ -26,6 +26,8 @@ case "$1" in
         if ! grep -q "/var/lib/clusterctrl/nfs/p1" /etc/exports; then
             cat /usr/share/clusterctrl/exports >> /etc/exports
     	    systemctl restart clusterctrl-rpiboot.service nfs-kernel-server.service
+        else
+            systemctl start clusterctrl-rpiboot.service nfs-kernel-server.service
         fi
 
     ;;
