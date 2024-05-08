@@ -4,7 +4,6 @@ debian/clusterctrl-state.service			/usr/lib/systemd/system
 files/usr/share/clusterctrl/issue.p					/usr/share/clusterctrl/
 files/usr/share/clusterctrl/issue.c					/usr/share/clusterctrl/
 files/usr/share/clusterctrl/default-clusterctrl				/usr/share/clusterctrl/
-files/usr/share/clusterctrl/reconfig-usbboot				/usr/share/clusterctrl/
 files/usr/share/clusterctrl/python/clusterctrl-setup-gadget.sh		/usr/share/clusterctrl/python/
 files/usr/share/clusterctrl/python/xra1200.py				/usr/share/clusterctrl/python/
 files/usr/share/clusterctrl/issue.c					/usr/share/clusterctrl/
@@ -16,7 +15,6 @@ files/usr/sbin/composite-clusterctrl					/usr/sbin/
 files/usr/sbin/reconfig-clusterctrl					/usr/sbin/
 files/usr/lib/systemd/system/clusterctrl-composite.service		/usr/lib/systemd/system/
 files/usr/lib/systemd/system/clusterctrl-init.service			/usr/lib/systemd/system/
-files/usr/lib/systemd/system/clusterctrl-rpiboot.service		/usr/lib/systemd/system/
 files/usr/share/initramfs-tools/hooks/clusterctrl			/usr/share/initramfs-tools/hooks/
 
 
@@ -27,8 +25,10 @@ files/etc/minicom/minirc.p4						/etc/minicom/
 files/etc/minicom/minirc.p2						/etc/minicom/
 files/etc/minicom/minirc.p1						/etc/minicom/
 files/etc/minicom/minirc.p5						/etc/minicom/
-files/usr/sbin/usbboot-init						/usr/sbin/
 files/usr/sbin/copyMAC							/usr/sbin/
 
 #files/usr/share/applications/clusterhat.desktop			/usr/share/applications/
 #files/usr/sbin/xclusterhat						/usr/sbin/
+
+
+
