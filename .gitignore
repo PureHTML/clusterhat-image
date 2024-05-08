@@ -24,3 +24,6 @@ debian/clusterhat-image-writer.substvars
 debian/clusterhat-image-writer.debhelper-build-stamp
 debian/.debhelper/
 
+debian/clusterctrl-usbboot.substvars
+debian/clusterctrl-usbboot
+debian/clusterctrl-usbboot.debhelper.log

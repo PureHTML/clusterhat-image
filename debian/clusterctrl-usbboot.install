@@ -2,3 +2,4 @@ files/usr/share/clusterctrl/reconfig-usbboot				/usr/share/clusterctrl/
 files/usr/lib/systemd/system/clusterctrl-rpiboot.service		/usr/lib/systemd/system/
 files/usr/share/initramfs-tools/scripts/nfs-top/00_clusterctrl		/usr/share/initramfs-tools/scripts/nfs-top/
 files/usr/sbin/usbboot-init						/usr/sbin/
+debian/exports								/usr/share/clusterctrl/
