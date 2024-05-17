@@ -30,6 +30,9 @@ case "$1" in
             systemctl start clusterctrl-rpiboot.service nfs-kernel-server.service
         fi
 
+	#echo i2c-tiny-usb > /etc/modprobe.d/i2c-tinyusb.conf
+	#/bin/bash -c 'echo 0x3171 0x$ID_MODEL_ID >> /sys/bus/usb/drivers/i2c-tiny-usb/new_id'
+
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

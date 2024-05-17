@@ -30,5 +30,7 @@ files/usr/sbin/copyMAC							/usr/sbin/
 #files/usr/share/applications/clusterhat.desktop			/usr/share/applications/
 #files/usr/sbin/xclusterhat						/usr/sbin/
 
+#/home/vitex/Projects/PureHTML/clusterhat-image/files/etc/network/interfaces.d/clusterctrl
 
-
+files/etc/iptables/*	/etc/iptables/
+files/etc/dhcpcd.conf	/etc/
