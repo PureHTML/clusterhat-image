@@ -103,11 +103,15 @@ if [ -f "$SOURCE/$VER-raspios-bullseye-armhf-full.img" ];then
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspios-bookworm-armhf.img" ];then
- SOURCES[$CNT]="$VER-raspios-bookworm-armhf.img|$VER-$REV-bookworm-ClusterCTRL-armhf|FULL|RASPIOS32BOOKWORM"
+ SOURCES[$CNT]="$VER-raspios-bookworm-armhf.img|$VER-$REV-bookworm-ClusterCTRL-armhf|STD|RASPIOS32BOOKWORM"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspios-bookworm-armhf-lite.img" ];then
  SOURCES[$CNT]="$VER-raspios-bookworm-armhf-lite.img|$VER-$REV-bookworm-ClusterCTRL-armhf-lite|LITE|RASPIOS32BOOKWORM"
+ let CNT=$CNT+1
+fi
+if [ -f "$SOURCE/$VER-raspios-bookworm-armhf-full.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bookworm-armhf-full.img|$VER-$REV-bookworm-ClusterCTRL-armhf-full|FULL|RASPIOS32BOOKWORM"
  let CNT=$CNT+1
 fi
 
@@ -128,12 +132,20 @@ if [ -f "$SOURCE/$VER-raspios-bullseye-arm64-lite.img" ];then
  SOURCES[$CNT]="$VER-raspios-bullseye-arm64-lite.img|$VER-$REV-bullseye-ClusterCTRL-arm64-lite|LITE|RASPIOS64BULLSEYE"
  let CNT=$CNT+1
 fi
+if [ -f "$SOURCE/$VER-raspios-bullseye-arm64-full.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bullseye-arm64-full.img|$VER-$REV-bullseye-ClusterCTRL-arm64-full|FULL|RASPIOS64BULLSEYE"
+ let CNT=$CNT+1
+fi
 if [ -f "$SOURCE/$VER-raspios-bookworm-arm64.img" ];then
- SOURCES[$CNT]="$VER-raspios-bookworm-arm64.img|$VER-$REV-bookworm-ClusterCTRL-arm64|FULL|RASPIOS64BOOKWORM"
+ SOURCES[$CNT]="$VER-raspios-bookworm-arm64.img|$VER-$REV-bookworm-ClusterCTRL-arm64|STD|RASPIOS64BOOKWORM"
  let CNT=$CNT+1
 fi
 if [ -f "$SOURCE/$VER-raspios-bookworm-arm64-lite.img" ];then
  SOURCES[$CNT]="$VER-raspios-bookworm-arm64-lite.img|$VER-$REV-bookworm-ClusterCTRL-arm64-lite|LITE|RASPIOS64BOOKWORM"
+ let CNT=$CNT+1
+fi
+if [ -f "$SOURCE/$VER-raspios-bookworm-arm64-full.img" ];then
+ SOURCES[$CNT]="$VER-raspios-bookworm-arm64-full.img|$VER-$REV-bookworm-ClusterCTRL-arm64-full|FULL|RASPIOS64BOOKWORM"
  let CNT=$CNT+1
 fi
 
@@ -227,11 +239,6 @@ EOF
   mount -o bind /proc $MNT/proc
   mount -o bind /dev $MNT/dev
 
-  if [ $QEMU -eq 1 ];then
-   cp /usr/bin/qemu-arm-static $MNT/usr/bin/qemu-arm-static
-   sed -i "s/\(.*\)/#\1/" $MNT/etc/ld.so.preload
-  fi
-
   chroot $MNT apt -y purge wolfram-engine
 
   # Get any updates / install and remove pacakges
@@ -246,7 +253,7 @@ EOF
 	-o $RELEASE = "RASPIOS32BULLSEYE" -o $RELEASE = "RASPIOS64BULLSEYE" ]; then
    INSTALLEXTRA+=" initramfs-tools-core python3-smbus python3-usb python3-libusb1 ifmetric"
   elif [ $RELEASE =  "RASPIOS64BOOKWORM" -o $RELEASE = "RASPIOS32BOOKWORM" ]; then
-   INSTALLEXTRA+=" initramfs-tools-core python3-smbus python3-usb python3-libusb1 ifmetric python3-libgpiod"
+   INSTALLEXTRA+=" initramfs-tools-core python3-smbus python3-usb python3-libusb1 ifmetric python3-libgpiod ifupdown"
   fi
 
   chroot $MNT apt -y install rpiboot bridge-utils screen minicom subversion git libusb-1.0-0-dev nfs-kernel-server busybox $INSTALLEXTRA
@@ -258,10 +265,10 @@ EOF
 
   chroot $MNT /bin/bash -c 'APT_LISTCHANGES_FRONTEND=none apt -y install iptables-persistent'
 
-  # Remove ModemManager
-  chroot $MNT systemctl disable ModemManager.service
-  chroot $MNT apt -y purge modemmanager
-  chroot $MNT apt-mark hold modemmanager
+#  # Remove ModemManager
+#  chroot $MNT systemctl disable ModemManager.service
+#  chroot $MNT apt -y purge modemmanager
+#  chroot $MNT apt-mark hold modemmanager
 
   # Add more resolvers
   echo -e "nameserver 8.8.4.4\nnameserver 2001:4860:4860::8888\nnameserver 2001:4860:4860::8844" >> $MNT/etc/resolv.conf
@@ -434,12 +441,8 @@ EOF
   done
 
   # Setup config.txt file
-  C=`grep -c "dtoverlay=dwc2,dr_mode=peripheral" $MNT/$FW/config.txt`
-
-  if [ $C -eq 0  ];then
-   echo -e "# Load overlay to allow USB Gadget devices\n#dtoverlay=dwc2,dr_mode=peripheral" >> $MNT/$FW/config.txt
-   echo -e "# Use XHCI USB 2 Controller for Cluster HAT Controllers\n[pi4]\notg_mode=1 # Controller only\n[cm4]\notg_mode=0 # Unless CM4\n[all]\n" >> $MNT/$FW/config.txt
-  fi
+  echo -e "# Load overlay to allow USB Gadget devices\ndtoverlay=dwc2,dr_mode=host" >> $MNT/$FW/config.txt
+  echo -e "# Use XHCI USB 2 Controller for Cluster HAT Controllers\n[pi4]\notg_mode=1 # Controller only\n[cm4]\notg_mode=0 # Unless CM4\n[all]\n" >> $MNT/$FW/config.txt
 
   if [ $RELEASE = "RASPIOS64BULLSEYE" ] && [ ! -f "$MNT/$FW/bcm2710-rpi-zero-2.dtb" ];then
    cp $MNT/$FW/bcm2710-rpi-3-b.dtb $MNT/$FW/bcm2710-rpi-zero-2.dtb
@@ -453,16 +456,12 @@ EOF
   chroot $MNT apt -y autoremove --purge
   chroot $MNT apt clean
 
-  if [ $QEMU -eq 1 ];then
-   rm $MNT/usr/bin/qemu-arm-static
-   sed -i "s/^#//" $MNT/etc/ld.so.preload
-  fi
-
   umount $MNT/dev
   umount $MNT/proc
   umount $MNT/$FW
   umount $MNT
 
+  sleep $SLEEP
   zerofree -v ${LOOP}p2
   sleep $SLEEP
 
@@ -471,6 +470,7 @@ EOF
   if [ "$FINALISEIMG" != "" ];then
    "$FINALISEIMG" "$FINALISEIMGOPT" "$DEST/$DESTFILENAME-CBRIDGE.img"
    LOOP=`losetup -fP --show $DEST/$DESTFILENAME-CBRIDGE.img`
+   sleep $SLEEP
    zerofree -v ${LOOP}p2
    losetup -d $LOOP
   fi
@@ -503,11 +503,6 @@ EOF
 
   mount -o bind /proc $MNT2/root/proc
 
-  if [ $QEMU -eq 1 ];then
-   cp /usr/bin/qemu-arm-static $MNT2/root/usr/bin/qemu-arm-static
-   sed -i "s/\(.*\)/#\1/" $MNT2/root/etc/ld.so.preload
-  fi
-
   sed -i "/ \/ /d" $MNT2/root/etc/fstab
   sed -i "/ \/boot/d" $MNT2/root/etc/fstab
   
@@ -525,7 +520,7 @@ EOF
    echo "FWLOC='/$FW/'" > $MNT2/root/etc/default/raspberrypi-sys-mods
    echo -e "[Service]\nExecStop=\nExecStop=/sbin/ifdown -a --read-environment --exclude=lo --exclude=usb0 --exclude=usb0.10" > $MNT2/root/etc/systemd/system/networking.service.d/override.conf
   fi
-  sed -i "s/^#dtoverlay=dwc2,dr_mode=peripheral$/dtoverlay=dwc2,dr_mode=peripheral/" $MNT2/root/$FW/config.txt
+  sed -i "s/^dtoverlay=dwc2.*$/dtoverlay=dwc2,dr_mode=peripheral/" $MNT2/root/$FW/config.txt
 
   echo -e "dwc2\n8021q\nuio_pdrv_genirq\nuio\nusb_f_acm\nu_serial\nusb_f_ecm\nu_ether\nlibcomposite\nudc_core\nipv6\nusb_f_rndis\n" >> $MNT2/root/etc/initramfs-tools/modules
   if [ $RELEASE = "RASPIOS64BUSTER" -o $RELEASE = "RASPIOS64BULLSEYE" ];then
@@ -599,11 +594,6 @@ EOF
    for V in `(cd $MNT2/root/lib/modules/;ls|grep v8|sort -V|tail -n1)`; do
     chroot $MNT2/root /bin/bash -c "mkinitramfs -o /boot/initramfs8.img $V"
    done
-  fi
-
-  if [ $QEMU -eq 1 ];then
-   rm $MNT2/root/usr/bin/qemu-arm-static
-   sed -i "s/^#//" $MNT2/root/etc/ld.so.preload
   fi
 
   umount $MNT2/root/proc
