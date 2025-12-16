@@ -1,4 +1,10 @@
-clusterhat-image (2024.02.16) UNRELEASED; urgency=low
+clusterhat-image (2025.12.16) UNRELEASED; urgency=medium
+
+  * update for current burtyb/clusterhat-image
+
+ -- vitex <info@vitexsoftware.cz>  Tue, 16 Dec 2025 14:06:34 +0100
+
+clusterhat-image (2024.02.16) unstable; urgency=low
 
   [ CyberVitexus ]
   * Initial release.
@@ -7,4 +13,4 @@ clusterhat-image (2024.02.16) UNRELEASED; urgency=low
   [ vitex ]
   * xclusterhat removal
 
- -- vitex <info@vitexsoftware.cz>  Fri, 16 Feb 2024 12:42:18 +0100
+ -- vitex <info@vitexsoftware.cz>  Tue, 16 Dec 2025 14:06:28 +0100

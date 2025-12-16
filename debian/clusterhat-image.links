@@ -1,1 +1,2 @@
-/boot/firmware/bootcode.bin /var/lib/clusterctrl/boot
+/boot/firmware/bootcode.bin /var/lib/clusterctrl/boot/bootcode.bin 
+

@@ -27,3 +27,8 @@ debian/.debhelper/
 debian/clusterctrl-usbboot.substvars
 debian/clusterctrl-usbboot
 debian/clusterctrl-usbboot.debhelper.log
+
+debian/clusterctrl-usbboot.postrm.debhelper
+debian/clusterctrl.postrm.debhelper
+
+
