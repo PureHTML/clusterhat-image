@@ -238,13 +238,22 @@ EOF
   mount ${LOOP}p1 $MNT/$FW
   mount -o bind /proc $MNT/proc
   mount -o bind /dev $MNT/dev
+  mount -o bind /sys $MNT/sys
+
+  if [ -n $APTPROXY ]; then
+   echo "Acquire::http::Proxy \"http://${APTPROXY}\";" > $MNT/etc/apt/apt.conf.d/proxy.conf
+  fi
 
   chroot $MNT apt -y purge wolfram-engine
+
+  if [ $DEBUGSHELL = "1" ]; then
+   chroot $MNT systemctl enable debug-shell.service
+  fi
 
   # Get any updates / install and remove pacakges
   chroot $MNT apt update -y
   if [ $UPGRADE = "1" ]; then
-   chroot $MNT /bin/bash -c 'APT_LISTCHANGES_FRONTEND=none apt -y dist-upgrade'
+   chroot $MNT /bin/bash -c 'APT_LISTCHANGES_FRONTEND=none apt -y full-upgrade'
   fi
 
   if [ $RELEASE = "STRETCH" ];then
@@ -383,7 +392,25 @@ EOF
   #chroot $MNT /bin/bash -c "raspi-config nonint do_serial 0"
 
   # Enable I2C (used for I/O expander on Cluster HAT v2.x)
-  chroot $MNT /bin/bash -c "raspi-config nonint do_i2c 0"
+  #chroot $MNT /bin/bash -c "raspi-config nonint do_i2c 0"
+  cat << EOF >> $MNT/boot/firmware/config.txt
+
+# ClusterCTRL I2C (GPIO2/3 with clock stretching support)
+[pi0]
+dtoverlay=i2c-gpio,bus=1,i2c_gpio_sda=2,i2c_gpio_scl=3
+[pi1]
+dtoverlay=i2c-gpio,bus=1,i2c_gpio_sda=2,i2c_gpio_scl=3
+[pi2]
+dtoverlay=i2c-gpio,bus=1,i2c_gpio_sda=2,i2c_gpio_scl=3
+[pi3]
+dtoverlay=i2c-gpio,bus=1,i2c_gpio_sda=2,i2c_gpio_scl=3
+[pi4]
+# Can't use i2c3 as it can't be bus 1
+dtoverlay=i2c-gpio,bus=1,i2c_gpio_sda=2,i2c_gpio_scl=3
+[pi5]
+dtparam=i2c_arm=on
+[all]
+EOF
 
   # Change the hostname to "cbridge"
   sed -i "s#^127.0.1.1.*#127.0.1.1\tcbridge#g" $MNT/etc/hosts
@@ -441,7 +468,7 @@ EOF
   done
 
   # Setup config.txt file
-  echo -e "# Load overlay to allow USB Gadget devices\ndtoverlay=dwc2,dr_mode=host" >> $MNT/$FW/config.txt
+  echo -e "\n# Load overlay to allow USB Gadget devices\ndtoverlay=dwc2,dr_mode=host" >> $MNT/$FW/config.txt
   echo -e "# Use XHCI USB 2 Controller for Cluster HAT Controllers\n[pi4]\notg_mode=1 # Controller only\n[cm4]\notg_mode=0 # Unless CM4\n[all]\n" >> $MNT/$FW/config.txt
 
   if [ $RELEASE = "RASPIOS64BULLSEYE" ] && [ ! -f "$MNT/$FW/bcm2710-rpi-zero-2.dtb" ];then
@@ -456,10 +483,10 @@ EOF
   chroot $MNT apt -y autoremove --purge
   chroot $MNT apt clean
 
-  umount $MNT/dev
-  umount $MNT/proc
-  umount $MNT/$FW
-  umount $MNT
+  # Cleanup
+  rm -f $MNT/etc/apt/apt.conf.d/proxy.conf
+
+  umount -R $MNT
 
   sleep $SLEEP
   zerofree -v ${LOOP}p2
@@ -497,8 +524,7 @@ EOF
   mkdir "$MNT2/root"
   tar -cC "$MNT" .|tar -xC "$MNT2/root/"
 
-  umount $MNT/$FW
-  umount $MNT
+  umount -R $MNT
   losetup -d $LOOP
 
   mount -o bind /proc $MNT2/root/proc
@@ -518,11 +544,12 @@ EOF
   if [ $RELEASE = "RASPIOS64BOOKWORM" -o $RELEASE = "RASPIOS32BOOKWORM" ]; then
    echo "172.19.180.254:/var/lib/clusterctrl/nfs/p253/boot/firmware /boot/firmware nfs defaults 0 0" >> $MNT2/root/etc/fstab
    echo "FWLOC='/$FW/'" > $MNT2/root/etc/default/raspberrypi-sys-mods
+   mkdir -p $MNT2/root/etc/systemd/system/networking.service.d/
    echo -e "[Service]\nExecStop=\nExecStop=/sbin/ifdown -a --read-environment --exclude=lo --exclude=usb0 --exclude=usb0.10" > $MNT2/root/etc/systemd/system/networking.service.d/override.conf
   fi
   sed -i "s/^dtoverlay=dwc2.*$/dtoverlay=dwc2,dr_mode=peripheral/" $MNT2/root/$FW/config.txt
 
-  echo -e "dwc2\n8021q\nuio_pdrv_genirq\nuio\nusb_f_acm\nu_serial\nusb_f_ecm\nu_ether\nlibcomposite\nudc_core\nipv6\nusb_f_rndis\n" >> $MNT2/root/etc/initramfs-tools/modules
+  echo -e "dwc2\n8021q\nuio_pdrv_genirq\nuio\nusb_f_acm\nu_serial\nu_ether\nlibcomposite\nudc_core\nipv6\nusb_f_ncm\nusb_f_ecm\nusb_f_eem\nusb_f_rndis\n" >> $MNT2/root/etc/initramfs-tools/modules
   if [ $RELEASE = "RASPIOS64BUSTER" -o $RELEASE = "RASPIOS64BULLSEYE" ];then
    echo -e "\n[all]\ninitramfs initramfs8.img\ndtparam=sd_poll_once=on\n" >> $MNT2/root/$FW/config.txt
   elif [ $RELEASE = "RASPIOS64BOOKWORM" -o $RELEASE = "RASPIOS32BOOKWORM" ];then
@@ -614,17 +641,19 @@ EOF
 
  if [ -f $DEST/$DESTFILENAME-CNAT.img ];then
    echo "Skipping $VARNAME NAT (file exists)"
-  else
-   echo "Creating $VARNAME NAT"
-   cp $DEST/$DESTFILENAME-CBRIDGE.img $DEST/$DESTFILENAME-CNAT.img
-   LOOP=`losetup -fP --show $DEST/$DESTFILENAME-CNAT.img`
-   sleep $SLEEP
-   mount ${LOOP}p1 $MNT
-   sed -i "s# init=.*# init=/usr/sbin/reconfig-clusterctrl cnat#" $MNT/cmdline.txt
-   umount $MNT
+ elif [ ${MAKECNAT} = "0" ];then
+  echo "Skipping $VARNAME NAT"
+ else
+  echo "Creating $VARNAME NAT"
+  cp $DEST/$DESTFILENAME-CBRIDGE.img $DEST/$DESTFILENAME-CNAT.img
+  LOOP=`losetup -fP --show $DEST/$DESTFILENAME-CNAT.img`
+  sleep $SLEEP
+  mount ${LOOP}p1 $MNT
+  sed -i "s# init=.*# init=/usr/sbin/reconfig-clusterctrl cnat#" $MNT/cmdline.txt
+  umount $MNT
 
-   losetup -d $LOOP
-  fi
+  losetup -d $LOOP
+ fi
 
 
  # Build Px images as required

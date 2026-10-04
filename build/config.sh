@@ -33,6 +33,9 @@ SERIALAUTOLOGIN=0
 # Do we run dist-upgrade?
 UPGRADE=1
 
+# Do we build CNAT?
+MAKECNAT=1
+
 # Max Px nodes to build for lite/std/full
 MAXPLITE=4
 MAXPSTD=0
@@ -69,6 +72,16 @@ FINALISEIMGOPT=""
 
 # Use rsyslog
 USERSYSLOG=0
+
+# Enable root debug shell which is available during boot on tty9
+# SECURITY WARNING: This gives anyone who can access tty9 root access (no password needed)
+# It's useful when debugging boot issues (i.e. systemd hangs)
+DEBUGSHELL=0
+
+# Use web proxy for apt (IP:PORT) during image creation
+# DOES NOT PERSIST IN IMAGE FILES
+# (e.g. "10.11.12.13:1415")
+APTPROXY=""
 
 # How many seconds to sleep for between each section
 SLEEP=5
